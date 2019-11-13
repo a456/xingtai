@@ -1,0 +1,59 @@
+<div class="left_float">
+    <img style="height: 150px" src="{:personal()['left_img']}"/>
+</div>
+<div class="right_float">
+    <img style="width: 150px" src="{:personal()['right_img']}"/>
+</div>
+<!-- 底部版权 -->
+<footer>
+    <div class="container">
+
+        <div class="copyright">
+            <p>{:personal()['address']}</p>
+        </div>
+    </div>
+</footer>
+<footer style="background:#2A3036;">
+    <div class="container">
+        <div class="copyright">
+            <p style="text-align:center">{:personal()['copyright']}</p>
+        </div>
+    </div>
+</footer>
+<!-- JS 脚本 -->
+<script src="<?php echo config('domain');?>/__JS__/jquery.min.js"></script>
+<script src="<?php echo config('domain');?>/__JS__/HBSlider.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(window).scroll(function(){
+            var docHeight=$(document).scrollTop();
+            $(".left_float,.right_float").animate({"top":docHeight+80},30);
+        });
+    });
+</script>
+<script>
+    var carousel  = eval('<?php echo json_encode(carousel());?>');
+    console.log(carousel);
+
+    var sliderData = new Array();
+    for (var i =0;i<carousel.length;i++){
+        sliderData[i] = new Array();
+        sliderData[i]['title'] = carousel[i].title;
+        sliderData[i]['pic'] = carousel[i].url;
+        sliderData[i]['url'] = '#';
+
+    }
+    console.log(sliderData);
+    $(function () {
+        HBSlider.setConfig({
+            autoPlay: true,
+            delay: 5
+        });
+        HBSlider.setItems(sliderData);
+        HBSlider.init();
+        HBSlider.play();
+    });
+</script>
+
+</body>
+</html>
