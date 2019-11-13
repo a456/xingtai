@@ -43,5 +43,5 @@ return [
     //备份数据地址
     'back_path' => APP_PATH .'../back/',
     //ip
-    'domain'    => 'http://www.xingtai.com',
+    'domain'    => 'http://www.xthuishou.com',
 ];
