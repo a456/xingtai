@@ -11,6 +11,7 @@
 // $Id$
 
 return [
+    'debug' => false,
     // 是否开启路由
     'url_route_on' => true,
     'trace' => [
@@ -35,7 +36,7 @@ return [
         // 缓存前缀
         'prefix' => '',
         // 缓存有效期 0表示永久缓存
-        'expire' => 1,
+        'expire' => 60*60*24,
     ],
 
     //加密串
