@@ -14,6 +14,6 @@ class Android extends Controller
         }
     }
     public function index(){
-        die(111);
+        echo  11111111;
     }
 }
