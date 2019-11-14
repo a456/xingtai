@@ -13,9 +13,13 @@ return [
 
     // 模板参数替换
     'view_replace_str'       => array(
-        '__CSS__'    => '/static/home/css',
-        '__JS__'     => '/static/home/js',
-        '__IMG__' => '/static/home/images',
+        '__CSS__'    => '/static/home/pc/css',
+        '__JS__'     => '/static/home/pc/js',
+        '__IMG__' => '/static/home/pc/images',
+        '__CSSM__' => '/static/home/mobile/css',
+        '__JSM__' => '/static/home/mobile/js',
+        '__IMGM__' => '/static/home/mobile/images',
+        '__PLUGM__' => '/static/home/mobile/plug',
     ),
 
     // 多库测试

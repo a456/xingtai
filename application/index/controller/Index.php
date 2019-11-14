@@ -10,7 +10,7 @@ class Index extends Controller
     {
         parent::__construct();
         if(isMobile()){
-            $this->redirect('Index/android/index');
+            $this->redirect('Index/mobile/index');
         }
     }
     public $carousel_limit = '';
@@ -18,7 +18,7 @@ class Index extends Controller
     {
         $field = 'id,title,alt,edit_time,url,content,type,classlist,detail_map,click';
         $article_list = Db::name('article_list')->where(['status'=>1,'classlist'=>1])->field($field)->order('sort asc')->limit(8)->select();//推荐回收
-        $class_ification = Db::name('article_list')->where(['status'=>1,'classlist'=>2])->field($field)->order('sort asc')->limit(20)->select();//分类回收
+        $class_ification = Db::name('article_list')->where(['status'=>1,'classlist'=>2])->field($field)->order('sort asc')->limit(50)->select();//分类回收
 //        $latest_recycling = Db::name('article_list')->where(['status'=>1,'classlist'=>3])->field($field)->order('edit_time desc')->limit(5)->select();//最新回收
 //        $popular = Db::name('article_list')->where(['status'=>1,'classlist'=>4])->field($field)->order('click desc')->limit(5)->select();//热门回收
         $TypeModel = new TypeModel;

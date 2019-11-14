@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>{:personal()['title']}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<title>Document</title> 关键字增加所搜性-->
+    <meta name="description" content="{:personal()['alt']}">
+    <!--移动端<meta name="keywords" content="">-->
+    <meta name="keywords" content="{:personal()['alt']}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>{:personal()['title']}</title>
     <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" mce_href="http://jt.hapboy.xyz/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo config('domain');?>/__CSS__/reset.css">
