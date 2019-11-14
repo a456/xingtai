@@ -9,7 +9,7 @@ class Android extends Controller
     public function __construct()
     {
         parent::__construct();
-        if(isMobile()){
+        if(!isMobile()){
             $this->redirect('Index/index/index');
         }
     }
