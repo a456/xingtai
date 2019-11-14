@@ -3,14 +3,16 @@ namespace app\index\controller;
 
 use think\Db;
 use app\admin\model\TypeModel;
-
-class Index extends Jump
+use think\Controller;
+class Index extends Controller
 {
     public function __construct()
     {
         parent::__construct();
+        if(isMobile()){
+            $this->redirect('Index/android/index');
+        }
     }
-
     public $carousel_limit = '';
     public function index()
     {
