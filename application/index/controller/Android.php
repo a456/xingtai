@@ -13,4 +13,7 @@ class Android extends Controller
             $this->redirect('Index/index/index');
         }
     }
+    public function index(){
+        die(111);
+    }
 }
