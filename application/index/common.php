@@ -210,7 +210,7 @@ function navigation(){
 
 //轮播图
 function carousel(){
-    $carousel_map = db('carousel_map')->where(['status'=>1])->field('id,title,url,sort,alt,type')->order('sort asc, id desc')->select();//轮播图
+    $carousel_map = db('carousel_map')->where(['status'=>1])->field('id,title,url,sort,alt,type')->order('sort asc, id desc')->limit(3)->select();//轮播图
     foreach ($carousel_map as $k=>$v){
         $carousel_map[$k]['url'] = config('domain').$carousel_map[$k]['url'];
     }
