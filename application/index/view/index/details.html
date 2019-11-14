@@ -26,40 +26,11 @@
   </div>
 
   <div class="sidebar">
+    {volist name="navigation" id="itmes" key="k"}
     <div class="right-module">
-      <h4>{$classification[3]}</h4>
-      <ul class="new-artist-songs">
-        {volist name="latest" id="itmes"}
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="{:config('domain').$itmes.url}">
-          </div>
-          <div class="info">
-            <h3>{$itmes.title}</h3>
-            <p>{$itmes.alt} / <span>{$itmes.click}</span>次点击</p>
-          </div>
-          <a href="{:url('details',array('id'=>$itmes.id))}" title="{$itmes.title}" class="cover-link"></a>
-        </li>
-        {/volist}
-      </ul>
+      <h4><a href="{:url('classlist',array('type'=>$k))}">{$itmes}</a></h4>
     </div>
-    <div class="right-module">
-      <h4>{$classification[4]}</h4>
-      <ul class="new-artist-songs">
-        {volist name="hottest" id="itmes"}
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="{:config('domain').$itmes.url}">
-          </div>
-          <div class="info">
-            <h3>{$itmes.title}</h3>
-            <p>{$itmes.alt} / <span>{$itmes.click}</span>次点击</p>
-          </div>
-          <a href="{:url('details',array('id'=>$itmes.id))}" title="{$itmes.title}" class="cover-link"></a>
-        </li>
-        {/volist}
-      </ul>
-    </div>
+    {/volist}
   </div>
 </div>
 

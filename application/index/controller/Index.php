@@ -13,15 +13,15 @@ class Index extends Controller
         $field = 'id,title,alt,edit_time,url,content,type,classlist,detail_map,click';
         $article_list = Db::name('article_list')->where(['status'=>1,'classlist'=>1])->field($field)->order('sort asc')->limit(8)->select();//推荐回收
         $class_ification = Db::name('article_list')->where(['status'=>1,'classlist'=>2])->field($field)->order('sort asc')->limit(20)->select();//分类回收
-        $latest_recycling = Db::name('article_list')->where(['status'=>1,'classlist'=>3])->field($field)->order('edit_time desc')->limit(5)->select();//最新回收
-        $popular = Db::name('article_list')->where(['status'=>1,'classlist'=>4])->field($field)->order('click desc')->limit(5)->select();//热门回收
+//        $latest_recycling = Db::name('article_list')->where(['status'=>1,'classlist'=>3])->field($field)->order('edit_time desc')->limit(5)->select();//最新回收
+//        $popular = Db::name('article_list')->where(['status'=>1,'classlist'=>4])->field($field)->order('click desc')->limit(5)->select();//热门回收
         $TypeModel = new TypeModel;
         $this->assign([
             'type' => 1,
             'article_list' => $article_list,
             'class_ification' => $class_ification,
-            'latest_recycling' => $latest_recycling,
-            'popular' => $popular,
+//            'latest_recycling' => $latest_recycling,
+//            'popular' => $popular,
             'navigation' => $TypeModel->navigation(),
             'classification' => $TypeModel->classification(),
         ]);
@@ -29,7 +29,7 @@ class Index extends Controller
     }
 
     public function classlist(){
-        $type = intval(input('type'));
+        $type = intval(input('type','1'));
         if($type){
             $carousel_find = Db::name('carousel_map')->where(['status'=>1,'type'=>$type])->field('id,title,url,alt')->order('sort asc, id desc')->find();//轮播图
             $article_find = Db::name('article_list')->where(['status'=>1,'type'=>$type])->field('id,title,alt,edit_time,url')->order('id desc')->select();//列表
@@ -47,21 +47,22 @@ class Index extends Controller
         errer_jump();
     }
     public function details(){
-        $id = intval(input('id'));
+        $id = intval(input('id','25'));
         if($id){
             $order = 'id desc';
             $field = 'id,title,alt,edit_time,url,content,type,classlist,detail_map,click';
             $article_find = Db::name('article_list')->where(['status'=>1,'id'=>$id])->field($field)->find();//推荐回收
-            $latest = Db::name('article_list')->where(['status'=>1,'type'=>$article_find['type'],'classlist'=>3])->field($field)->order($order)->select();//最新回收
-            $hottest = Db::name('article_list')->where(['status'=>1,'type'=>$article_find['type'],'classlist'=>4])->field($field)->order($order)->select();//最热回收
+//            $latest = Db::name('article_list')->where(['status'=>1,'type'=>$article_find['type'],'classlist'=>3])->field($field)->order($order)->select();//最新回收
+//            $hottest = Db::name('article_list')->where(['status'=>1,'type'=>$article_find['type'],'classlist'=>4])->field($field)->order($order)->select();//最热回收
             if(empty($article_find)){
                 errer_jump();
             }
             $TypeModel = new TypeModel;
             $this->assign([
                 'article_find'=>$article_find,
-                'latest'=>$latest,
-                'hottest'=>$hottest,
+//                'latest'=>$latest,
+//                'hottest'=>$hottest,
+                'navigation' => $TypeModel->navigation(),
                 'classification'=>$TypeModel->classification(),
             ]);
             return $this->fetch();

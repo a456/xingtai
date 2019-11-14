@@ -36,7 +36,7 @@ return [
         // 缓存前缀
         'prefix' => '',
         // 缓存有效期 0表示永久缓存
-        'expire' => 60*60*24,
+        'expire' => 60*60*24, //缓存一天
     ],
 
     //加密串
@@ -45,4 +45,5 @@ return [
     'back_path' => APP_PATH .'../back/',
     //ip
     'domain'    => 'http://122.51.103.12/',
+//    'domain'    => 'http://www.xingtai.com/',
 ];
