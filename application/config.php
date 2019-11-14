@@ -44,5 +44,5 @@ return [
     //备份数据地址
     'back_path' => APP_PATH .'../back/',
     //ip
-    'domain'    => 'http://www.xthuishou.com',
+    'domain'    => 'http://122.51.103.12/',
 ];
