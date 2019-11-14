@@ -1,12 +1,16 @@
 <?php
 namespace app\index\controller;
 
-use think\Controller;
 use think\Db;
 use app\admin\model\TypeModel;
 
-class Index extends Controller
+class Index extends Jump
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public $carousel_limit = '';
     public function index()
     {
