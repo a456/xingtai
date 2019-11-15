@@ -9,9 +9,9 @@ class Mobile extends Controller
     public function __construct()
     {
         parent::__construct();
-        if(!isMobile()){
-            $this->redirect('Index/index/index');
-        }
+//        if(!isMobile()){
+//            $this->redirect('Index/index/index');
+//        }
     }
     public function index(){
         $field = 'id,title,alt,edit_time,url,content,type,classlist,detail_map,click';
