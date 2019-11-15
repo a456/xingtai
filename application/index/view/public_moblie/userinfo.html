@@ -1,0 +1,30 @@
+
+<div class="about_form" style="height:250px" >
+    <div class="container">
+        <form>
+            <h2>填写信息,稍后有电话联系您</h2>
+            <div class="hrs"></div>
+            <ul>
+                <li>
+                    <span>您的手机号 :</span>
+                    <input id="phone" type="text" placeholder="请输入联系号码" name="phone" value="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                </li>
+                <li>
+                    <p><input class="about_form_submit" type="button" onclick="userinfo()" value="提交"></p>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+<script>
+    function userinfo() {
+        var phone = $('#phone').val();
+        if(!phone){
+            alert('请输入手机号码');
+            return false;
+        }
+        $.post("{:url('userinfo')}",{phone:phone},function (data) {
+            alert(data.msg);
+        })
+    }
+</script>

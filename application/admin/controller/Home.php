@@ -16,6 +16,8 @@ class Home extends Base
     protected $name_carousel = 'carousel_map';
     protected $name_second_hand = 'article_list';
     protected $personal = 'personal';
+    protected $user_info = 'user_info';
+
     //轮播图列表
     public function index_carousel()
     {
@@ -186,6 +188,34 @@ class Home extends Base
         $this->assign([
             'second' => $article->getListId(1)
         ]);
+        return $this->fetch();
+    }
+
+    //用户信息列表
+    public function user_info_list(){
+        if(request()->isAjax()){
+            $param = input('param.');
+
+            $limit = $param['pageSize'];
+            $offset = ($param['pageNumber'] - 1) * $limit;
+
+            $where = [];
+            if (!empty($param['phone'])) {
+                $where['phone'] = ['like', '%' . $param['phone'] . '%'];
+            }
+
+            $article = new AdminModel(['table'=>$this->user_info,'order'=>'id desc']);
+            $selectResult = $article->getList($where, $offset, $limit);
+            foreach($selectResult as $key=>$vo){
+                $selectResult[$key]['add_time'] = date('Y-m-d H:i:s',$selectResult[$key]['add_time']);
+            }
+
+            $return['total'] = $article->getListCount($where);  // 总数据
+            $return['rows'] = $selectResult;
+
+            return json($return);
+        }
+
         return $this->fetch();
     }
 
