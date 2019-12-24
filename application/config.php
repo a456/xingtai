@@ -11,7 +11,7 @@
 // $Id$
 
 return [
-    'debug' => false,
+//    'debug' => false,
     // 是否开启路由
     'url_route_on' => true,
     'trace' => [
@@ -23,7 +23,7 @@ return [
     'log' => [
         'type' => 'test',
     ],
-    'app_debug' => true,
+    'app_debug' => false,
 
     // +----------------------------------------------------------------------
     // | 缓存设置
