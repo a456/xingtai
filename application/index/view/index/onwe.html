@@ -1,0 +1,22 @@
+
+{include file='public/head' /}
+{include file='public/navigation' /}
+{include file='public/carousel' /}
+<link rel="stylesheet" href="<?php echo config('domain');?>/__CSS__/category.css">
+<!-- 主内容区域 -->
+<div class="container-sm box">
+    <div class="main">
+        <div class="main-wrap">
+            <div class="content-box">
+                <div class="piano-list">
+                    <div class="content-header">
+                        <h2><i class="fa fa-trash-o red"></i>{:navigation()['onwe']}</h2>
+                    </div>
+                    {:personal()['onwe']}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file='public/bottom' /}

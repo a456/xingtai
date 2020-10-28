@@ -1,0 +1,75 @@
+<div class="left_float">
+    <img src="{:personal()['left_img']}"/>
+</div>
+<div class="right_float" style="background: white;">
+    <ul class="nav navbar-nav navbar-right navbar-sm red">
+        <div>填写信息,稍后会有电话联系您!!!</div>
+        <div>&nbsp;&nbsp;&nbsp;<input type="text" id="phone" name="phone" class="search-input" placeholder="手机号码" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="userinfo()" type="button" value="提交"></div>
+    </ul>
+</div>
+<!-- 底部版权 -->
+<footer>
+    <div class="container">
+
+        <div class="copyright">
+            <p>{:personal()['address']}</p>
+        </div>
+    </div>
+</footer>
+<footer style="background:#2A3036;">
+    <div class="container">
+        <div class="copyright">
+            <p style="text-align:center"><a href="http://beian.miit.gov.cn">{:personal()['copyright']}</a></p>
+        </div>
+    </div>
+</footer>
+<!-- JS 脚本 -->
+<script src="<?php echo config('domain');?>/__JS__/jquery.min.js"></script>
+<script src="<?php echo config('domain');?>/__JS__/HBSlider.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(window).scroll(function(){
+            var docHeight=$(document).scrollTop();
+            $(".left_float,.right_float").animate({"top":docHeight+80},30);
+        });
+    });
+</script>
+<script>
+    var carousel  = eval('<?php echo json_encode(carousel());?>');
+    console.log(carousel);
+
+    var sliderData = new Array();
+    for (var i =0;i<carousel.length;i++){
+        sliderData[i] = new Array();
+        sliderData[i]['title'] = carousel[i].title;
+        sliderData[i]['pic'] = carousel[i].url;
+        sliderData[i]['url'] = '#';
+
+    }
+    console.log(sliderData);
+    $(function () {
+        HBSlider.setConfig({
+            autoPlay: true,
+            delay: 5
+        });
+        HBSlider.setItems(sliderData);
+        HBSlider.init();
+        HBSlider.play();
+    });
+</script>
+<script>
+    function userinfo() {
+        var phone = $('#phone').val();
+        if(!phone){
+            alert('请输入手机号码');
+            return false;
+        }
+        $.post("{:url('Mobile/userinfo')}",{phone:phone},function (data) {
+            alert(data.msg);
+        })
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{include file='public/head' /}
+{include file='public/head' /}
+{include file='public/navigation' /}
+
+<div class="container-sm player-wrap">
+  <div id="music-player" class="aplayer"></div>
+</div>
+<div class="container-sm box">
+  <div class="main">
+    <div class="main-wrap">
+      <div class="content-box article">
+        <div class="title">
+          <h2>{$article_find.title}</h2>
+          <div class="info">
+            <span class="author">{$article_find.alt}</span> / <span class="date">{:date('Y-m-d',$article_find.edit_time)}</span>
+          </div>
+        </div>
+        <div class="content">
+          <p>
+            <img src="{:config('domain').$article_find.detail_map}">
+          </p>
+          {$article_find.content}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    {volist name="navigation" id="itmes" key="k"}
+    <div class="right-module">
+      <h4><a href="{:url('classlist',array('type'=>$k))}">{$itmes}</a></h4>
+    </div>
+    {/volist}
+  </div>
+</div>
+
+{include file='public/bottom' /}
